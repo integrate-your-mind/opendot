@@ -3,9 +3,9 @@
 /**************************************************************************/
 /*                         This file is part of:                          */
 /*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                        https://opendotengine.org                         */
 /**************************************************************************/
-/* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */
+/* Copyright (c) 2014-present Opendot Engine contributors (see AUTHORS.md). */
 /* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */
 /*                                                                        */
 /* Permission is hereby granted, free of charge, to any person obtaining  */
@@ -724,7 +724,7 @@ void call_get_argument_type_info(int p_arg, PropertyInfo &info) {
 
 #ifdef DEBUG_METHODS_ENABLED
 template <typename Q>
-void call_get_argument_metadata_helper(int p_arg, int &index, GodotTypeInfo::Metadata &md) {
+void call_get_argument_metadata_helper(int p_arg, int &index, OpendotTypeInfo::Metadata &md) {
 	if (p_arg == index) {
 		md = GetTypeInfo<Q>::METADATA;
 	}
@@ -732,8 +732,8 @@ void call_get_argument_metadata_helper(int p_arg, int &index, GodotTypeInfo::Met
 }
 
 template <typename... P>
-GodotTypeInfo::Metadata call_get_argument_metadata(int p_arg) {
-	GodotTypeInfo::Metadata md = GodotTypeInfo::METADATA_NONE;
+OpendotTypeInfo::Metadata call_get_argument_metadata(int p_arg) {
+	OpendotTypeInfo::Metadata md = OpendotTypeInfo::METADATA_NONE;
 
 	int index = 0;
 	// I think rocket science is simpler than modern C++.
