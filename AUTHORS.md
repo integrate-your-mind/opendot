@@ -1,6 +1,6 @@
-# Godot Engine authors
+# Opendot Engine authors
 
-Godot Engine is developed by a community of voluntary contributors who
+Opendot Engine is developed by a community of voluntary contributors who
 contribute code, bug reports, documentation, translations, support, etc.,
 across multiple repositories.
 

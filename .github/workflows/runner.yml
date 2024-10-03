@@ -47,12 +47,12 @@ jobs:
 
   # Third stage: Run auxiliary tests using build artifacts from previous jobs.
 
-  # Can be turned off for PRs that intentionally break compat with godot-cpp,
-  # until both the upstream PR and the matching godot-cpp changes are merged.
-  godot-cpp-test:
-    name: 🪲 Godot CPP
+  # Can be turned off for PRs that intentionally break compat with opendot-cpp,
+  # until both the upstream PR and the matching opendot-cpp changes are merged.
+  opendot-cpp-test:
+    name: 🪲 Opendot CPP
     # This can be changed to depend on another platform, if we decide to use it for
-    # godot-cpp instead. Make sure to move the .github/actions/godot-api-dump step
+    # opendot-cpp instead. Make sure to move the .github/actions/opendot-api-dump step
     # appropriately.
     needs: linux-build
-    uses: ./.github/workflows/godot_cpp_test.yml
+    uses: ./.github/workflows/opendot_cpp_test.yml

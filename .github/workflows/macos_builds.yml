@@ -24,14 +24,14 @@ jobs:
             cache-name: macos-editor
             target: editor
             tests: true
-            bin: ./bin/godot.macos.editor.universal
+            bin: ./bin/opendot.macos.editor.universal
 
           - name: Template (target=template_release, tests=yes)
             cache-name: macos-template
             target: template_release
             tests: true
             sconsflags: debug_symbols=no
-            bin: ./bin/godot.macos.template_release.universal
+            bin: ./bin/opendot.macos.template_release.universal
 
     steps:
       - name: Checkout
@@ -39,21 +39,21 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Restore Godot build cache
-        uses: ./.github/actions/godot-cache-restore
+      - name: Restore Opendot build cache
+        uses: ./.github/actions/opendot-cache-restore
         with:
           cache-name: ${{ matrix.cache-name }}
         continue-on-error: true
 
       - name: Setup Python and SCons
-        uses: ./.github/actions/godot-deps
+        uses: ./.github/actions/opendot-deps
 
       - name: Setup Vulkan SDK
         run: |
           sh misc/scripts/install_vulkan_sdk_macos.sh
 
       - name: Compilation (x86_64)
-        uses: ./.github/actions/godot-build
+        uses: ./.github/actions/opendot-build
         with:
           sconsflags: ${{ env.SCONSFLAGS }} arch=x86_64
           platform: macos
@@ -61,25 +61,25 @@ jobs:
           tests: ${{ matrix.tests }}
 
       - name: Compilation (arm64)
-        uses: ./.github/actions/godot-build
+        uses: ./.github/actions/opendot-build
         with:
           sconsflags: ${{ env.SCONSFLAGS }} arch=arm64
           platform: macos
           target: ${{ matrix.target }}
           tests: ${{ matrix.tests }}
 
-      - name: Save Godot build cache
-        uses: ./.github/actions/godot-cache-save
+      - name: Save Opendot build cache
+        uses: ./.github/actions/opendot-cache-save
         with:
           cache-name: ${{ matrix.cache-name }}
         continue-on-error: true
 
       - name: Prepare artifact
         run: |
-          lipo -create ./bin/godot.macos.${{ matrix.target }}.x86_64 ./bin/godot.macos.${{ matrix.target }}.arm64 -output ./bin/godot.macos.${{ matrix.target }}.universal
-          rm ./bin/godot.macos.${{ matrix.target }}.x86_64 ./bin/godot.macos.${{ matrix.target }}.arm64
-          strip bin/godot.*
-          chmod +x bin/godot.*
+          lipo -create ./bin/opendot.macos.${{ matrix.target }}.x86_64 ./bin/opendot.macos.${{ matrix.target }}.arm64 -output ./bin/opendot.macos.${{ matrix.target }}.universal
+          rm ./bin/opendot.macos.${{ matrix.target }}.x86_64 ./bin/opendot.macos.${{ matrix.target }}.arm64
+          strip bin/opendot.*
+          chmod +x bin/opendot.*
 
       - name: Upload artifact
         uses: ./.github/actions/upload-artifact

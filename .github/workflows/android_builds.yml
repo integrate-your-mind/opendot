@@ -50,43 +50,43 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Restore Godot build cache
-        uses: ./.github/actions/godot-cache-restore
+      - name: Restore Opendot build cache
+        uses: ./.github/actions/opendot-cache-restore
         with:
           cache-name: ${{ matrix.cache-name }}
         continue-on-error: true
 
       - name: Setup Python and SCons
-        uses: ./.github/actions/godot-deps
+        uses: ./.github/actions/opendot-deps
 
       - name: Compilation
-        uses: ./.github/actions/godot-build
+        uses: ./.github/actions/opendot-build
         with:
           sconsflags: ${{ env.SCONSFLAGS }} ${{ matrix.sconsflags }}
           platform: android
           target: ${{ matrix.target }}
           tests: ${{ matrix.tests }}
 
-      - name: Save Godot build cache
-        uses: ./.github/actions/godot-cache-save
+      - name: Save Opendot build cache
+        uses: ./.github/actions/opendot-cache-save
         with:
           cache-name: ${{ matrix.cache-name }}
         continue-on-error: true
 
-      - name: Generate Godot templates
+      - name: Generate Opendot templates
         if: matrix.target == 'template_release'
         run: |
           cd platform/android/java
-          ./gradlew generateGodotTemplates
+          ./gradlew generateOpendotTemplates
           cd ../../..
           ls -l bin/
 
-      - name: Generate Godot editor
+      - name: Generate Opendot editor
         if: matrix.target == 'editor'
         run: |
           cd platform/android/java
-          ./gradlew generateGodotEditor
-          ./gradlew generateGodotHorizonOSEditor
+          ./gradlew generateOpendotEditor
+          ./gradlew generateOpendotHorizonOSEditor
           cd ../../..
           ls -l bin/android_editor_builds/
 
