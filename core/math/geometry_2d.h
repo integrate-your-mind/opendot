@@ -3,9 +3,9 @@
 /**************************************************************************/
 /*                         This file is part of:                          */
 /*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                        https://opendotengine.org                         */
 /**************************************************************************/
-/* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */
+/* Copyright (c) 2014-present Opendot Engine contributors (see AUTHORS.md). */
 /* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */
 /*                                                                        */
 /* Permission is hereby granted, free of charge, to any person obtaining  */
@@ -151,7 +151,7 @@ public:
 	}
 
 // Disable False Positives in MSVC compiler; we correctly check for 0 here to prevent a division by 0.
-// See: https://github.com/godotengine/godot/pull/44274
+// See: https://github.com/opendotengine/opendot/pull/44274
 #ifdef _MSC_VER
 #pragma warning(disable : 4723)
 #endif
