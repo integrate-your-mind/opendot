@@ -3,9 +3,9 @@
 /**************************************************************************/
 /*                         This file is part of:                          */
 /*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                        https://opendotengine.org                         */
 /**************************************************************************/
-/* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */
+/* Copyright (c) 2014-present Opendot Engine contributors (see AUTHORS.md). */
 /* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */
 /*                                                                        */
 /* Permission is hereby granted, free of charge, to any person obtaining  */
@@ -808,8 +808,8 @@ void TranslationServer::load_translations() {
 TranslationServer::TranslationServer() {
 	singleton = this;
 	main_domain.instantiate();
-	editor_domain = get_or_add_domain("godot.editor");
-	property_domain = get_or_add_domain("godot.properties");
-	doc_domain = get_or_add_domain("godot.documentation");
+	editor_domain = get_or_add_domain("opendot.editor");
+	property_domain = get_or_add_domain("opendot.properties");
+	doc_domain = get_or_add_domain("opendot.documentation");
 	init_locale_info();
 }
